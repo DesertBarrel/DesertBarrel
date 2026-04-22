@@ -1,0 +1,15 @@
+.next/
+node_modules/
+
+# Local env (never commit secrets)
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor
+.DS_Store
+.vscode/
