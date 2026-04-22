@@ -1,0 +1,16 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      # Set these on the VPS (don't commit secrets)
+      ADMIN_CONTROL_SECRET: ${ADMIN_CONTROL_SECRET}
+      ADMIN_CONTROL_PASSWORD: ${ADMIN_CONTROL_PASSWORD}
+    ports:
+      - "3000:3000"
+    volumes:
+      # Persist admin/control JSON state across deploys
+      - ./data:/app/data

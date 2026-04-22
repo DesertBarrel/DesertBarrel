@@ -37,3 +37,29 @@ npm start
 After deploy, verify:
 - `/` loads
 - `/api/status` returns `200`
+
+## Deploy (VPS + Docker)
+On your VPS, install Docker + Docker Compose, then:
+
+```bash
+git clone <your-repo>
+cd <your-repo>
+```
+
+Create a `.env` on the VPS (do not commit it):
+
+```bash
+ADMIN_CONTROL_SECRET=put_a_long_random_secret_here
+ADMIN_CONTROL_PASSWORD=put_a_strong_password_here
+```
+
+Bring it up:
+
+```bash
+docker compose up -d --build
+```
+
+Your app will be on `http://<server-ip>:3000`.
+
+### Domain + HTTPS
+Put a reverse proxy in front (Caddy or Nginx) and forward `desertbarrel.com` to `http://127.0.0.1:3000`.
