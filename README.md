@@ -63,3 +63,33 @@ Your app will be on `http://<server-ip>:3000`.
 
 ### Domain + HTTPS
 Put a reverse proxy in front (Caddy or Nginx) and forward `desertbarrel.com` to `http://127.0.0.1:3000`.
+
+## Deploy DBRL token on Base (ERC-20)
+
+This repo includes a simple fixed-supply ERC-20: `contracts/DesertBarrelToken.sol`.
+
+1. Install deps:
+
+```bash
+npm install
+```
+
+2. Create `.env.deploy` from the example:
+
+```bash
+cp .env.deploy.example .env.deploy
+```
+
+Fill in:
+- `PRIVATE_KEY` (deployer wallet funded with ETH on Base)
+- `BASE_RPC_URL` (or `BASE_SEPOLIA_RPC_URL` for testnet)
+- optional `BASESCAN_API_KEY` (for contract verification)
+
+3. Compile + deploy:
+
+```bash
+npm run hh:compile
+npm run token:deploy:base
+```
+
+After deployment, create liquidity on your chosen DEX (commonly Uniswap on Base). Nothing in this repo creates the pool automatically.

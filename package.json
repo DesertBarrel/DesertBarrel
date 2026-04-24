@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "WATCHPACK_POLLING=true next dev -H localhost",
     "build": "next build",
-    "start": "next start -H localhost"
+    "start": "next start -H localhost",
+    "hh:compile": "hardhat compile",
+    "token:deploy:base": "hardhat run scripts/deploy-token.js --network base",
+    "token:deploy:base-sepolia": "hardhat run scripts/deploy-token.js --network baseSepolia"
   },
   "dependencies": {
     "next": "^15.0.0",
@@ -13,9 +16,13 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.2.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.17",
     "typescript": "^5.6.0"
   }
 }
